@@ -1,10 +1,72 @@
 ---
+import Badge from '../components/Badge.astro'
 import Layout from '../layouts/Layout.astro'
+import SocialPill from '../components/SocialPill.astro'
+import SectionContainer from '../components/SectionContainer.astro'
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BriefCase from '../icons/ExperienceIcon.astro'
+import GithubIcon from '../icons/Github.astro'
+import LinkedInIcon from '../icons/LinkedIn.astro'
+import EmailIcon from '../icons/MailIcon.astro'
+import Experience from '../components/Experience.astro'
 ---
 
 <Layout>
-	<h1>Portfolio</h1>
+    <main>
+        <SectionContainer class='mb-8 py-44'>
+            <img
+                class='rounded-full size-12 mb-4'
+                src='https://png.pngtree.com/png-clipart/20200224/original/pngtree-cartoon-color-simple-male-avatar-png-image_5230557.jpg'
+                alt='foto'
+            />
+
+            <h1
+                class='text-white text-5xl font-bold flex flex-row gap-x-4 pb-10'
+            >
+                Hey , Im User <a
+                    href='*'
+                    target='_blank'
+                    rel='noopener'
+                    class='flex justify-center items-center'
+                >
+                    <Badge>Disponible FullTime</Badge>
+                </a>
+            </h1>
+            <h2 class='text-xl text-wrap'>
+                <span class='opacity-80'>Lorem ipsum dolor</span> sit amet Lorem
+                ipsum dolor sit amet consectetur adipisicing elit. Debitis ipsa cumque
+                reiciendis veniam eum, aut quam, nihil vero odio quo nam eaque eveniet.
+                <span class='text-yellow-200/90'
+                    >Tempore unde commodi blanditiis provident mollitia? Eos.</span
+                >
+            </h2>
+
+            <nav class='flex gap-x-4 mt-8'>
+                <SocialPill
+                    href='https://github.com/torres-jp?tab=repositories'
+                >
+                    <GithubIcon class='size-6' />
+                    Github
+                </SocialPill>
+
+                <SocialPill href='*'>
+                    <LinkedInIcon class='size-6' />
+                    LinkedIn
+                </SocialPill>
+
+                <SocialPill href='email@example.com'>
+                    <EmailIcon class='size-6' />
+                    email@example.com
+                </SocialPill>
+            </nav>
+        </SectionContainer>
+
+        <SectionContainer id='experience'>
+            <h2 class='text-2xl font-semibold mb-6 flex gap-x-3 items-center'>
+                <BriefCase class='size-7' />
+                Work Experience
+            </h2>
+            <Experience />
+        </SectionContainer>
+    </main>
 </Layout>
