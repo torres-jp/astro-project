@@ -1,4 +1,20 @@
 ---
+import NextJs from '../icons/NextJs.astro'
+import TailwindCss from '../icons/TailwindCss.astro'
+
+const TAGS = {
+    NEXT: {
+        name: 'Next.js',
+        class: 'text-white',
+        icon: NextJs,
+    },
+    TAILWIND: {
+        name: 'TailwindCSS',
+        class: 'text-white',
+        icon: TailwindCss,
+    },
+}
+
 const PROJECTS = [
     {
         title: 'Project 1',
@@ -6,27 +22,32 @@ const PROJECTS = [
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est iste assumenda illo officiis perferendis? Dolores numquam quas neque architecto laboriosam reiciendis, porro veniam ab mollitia accusantium nisi, nam eius, quibusdam doloremque. Sequi maiores libero voluptate odit magnam voluptates placeat aliquid!',
         github: '#',
         image: 'https://res.cloudinary.com/brainbok/image/upload/v1532962152/project-initiation-context.png',
-        tags: ['React', 'TailwindCSS', 'Astro'],
+        tags: [TAGS.NEXT, TAGS.TAILWIND],
     },
 ]
 ---
 
 {
-    PROJECTS.map((project) => (
+    PROJECTS.map(({ image, title, description, tags }) => (
         <article>
-            <h3 class='text-2xl font-semibold text-yellow-200 mb-2'>
-                {project.title}
-            </h3>
-            <p class='text-lg mb-4 text-pretty'>{project.description}</p>
-            <ul>
-                {project.tags.map((tag) => (
-                    <li>{tag}</li>
+            <h3 class='text-2xl font-semibold text-yellow-200 mb-2'>{title}</h3>
+            <p class='text-lg mb-4 text-pretty'>{description}</p>
+            <ul class='flex gap-x-4 flex-row'>
+                {tags.map((tag) => (
+                    <li>
+                        <span
+                            class={`flex gap-x-2 rounded-full text-sm ${tag.class} py-1 px-2`}
+                        >
+                            <tag.icon class='size-8' />
+                            {tag.name}
+                        </span>
+                    </li>
                 ))}
             </ul>
             <img
                 class='rounded  shadow-2xl shadow-white/10 size-90'
-                src={project.image}
-                alt={project.title}
+                src={image}
+                alt={title}
             />
         </article>
     ))
